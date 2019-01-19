@@ -1,14 +1,44 @@
 <html>
+<head>
+  <script src="https://js.stripe.com/v3"></script>
+</head>
 <body>
   Hi it's runhead.
   Here's a shop:
 
-  <!-- Load Stripe.js on your website. -->
-<script src="https://js.stripe.com/v3"></script>
+<form>
+  <label for="style">Style</label>
+  <select id="style">
+    <option value="grey_tee">Grey T-shirt</option>
+    <option value="grey_vest">Grey vest</option>
+    <option value="grey_long">Grey long sleeve tshirt</option>
+    <option value="fluoro_long">Fluoro long sleeve tshirt</option>
+  </select>
+  <label for="gender">Gender</label>
+  <select id="gender">
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+  </select>
+  <label for="size">Size</label>
+  <select id="size">
+    <option value="xs">XS</option>
+    <option value="s">S</option>
+    <option value="m">M</option>
+    <option value="l">L</option>
+    <option value="xl">XL</option>
+  </select>
+  <button id="checkout-button">Pay</button>
+</form>
 
-<!-- Create a button that your customers click to complete their purchase. -->
-<button id="checkout-button">Pay</button>
 <div id="error-message"></div>
+
+
+
+
+
+
+
+
 
 <script>
   var stripe = Stripe('pk_test_sLM7okmFFAH9JpukV5yTVrm3', {
