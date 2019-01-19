@@ -33,24 +33,41 @@
 <div id="error-message"></div>
 
 
-
-
-
-
-
-
-
 <script>
+  var skus = {
+    'grey_tee': {
+        'male': {
+          'xs': 'sku_EN5lSaovnlUrnF',
+          's': 'sku_EN5zMxIUYiYLmF',
+          'm': 'sku_EN5zfFVyGt7Niz',
+        },
+        'female': {},
+    },
+    'grey_vest': {},
+    'grey_long': {},
+    'fluoro_long': {},
+  };
   var stripe = Stripe('pk_test_sLM7okmFFAH9JpukV5yTVrm3', {
     betas: ['checkout_beta_4']
   });
 
   var checkoutButton = document.getElementById('checkout-button');
-  checkoutButton.addEventListener('click', function () {
+  checkoutButton.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    var style = document.getElementById('style').value;
+    var size = document.getElementById('size').value;
+    var gender = document.getElementById('gender').value;
+    var sku = skus[style][gender][size];
+    console.log('User selected SKU', sku);
+    if (sku == null) {
+      document.getElementById('error-message').textContent = 'Combination not valid';
+      return;
+    }
     // When the customer clicks on the button, redirect
     // them to Checkout.
     stripe.redirectToCheckout({
-      items: [{sku: 'sku_EN5lSaovnlUrnF', quantity: 1}],
+      items: [{sku: sku, quantity: 1}],
 
       // Note that it is not guaranteed your customers will be redirected to this
       // URL *100%* of the time, it's possible that they could e.g. close the
