@@ -1,0 +1,23 @@
+
+:root {
+  --runheadlight-color:#585858;
+  --runheaddark-color:#303030;
+  --runheadyellow-color:#FFCC00;
+}
+
+body {
+  background-color: var(--runheadlight-color);
+  font-size: 10pt;
+  font-family: Helvetica, Verdana, Geneva, Arial, sans-serif;
+  color: black;
+  line-height: 14pt;
+  padding-left: 5pt;
+  padding-right: 5pt;
+  padding-top: 5pt;
+}
+
+h1 {
+  font-family: Helvetica, Verdana, Geneva, Arial, sans-serif;
+  font-weight: bold;
+  line-height: 20pt;
+}
